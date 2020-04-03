@@ -22,7 +22,7 @@
         "marshmallow/commands": "^1.0",
         "spatie/laravel-sluggable": "^2.2",
         "marshmallow/laravel-helpers": "^1.0",
-        "marshmallow/priceable": "dev-master"
+        "marshmallow/package-priceable": "^1.0.1"
     },
     "autoload": {
         "psr-4": {
@@ -31,7 +31,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Marshmallow\\Product\\": "src"
+            "Marshmallow\\Product\\Tests\\": "tests/"
         }
     },
     "extra": {
