@@ -1,0 +1,47 @@
+{
+    "name": "marshmallow/package-products",
+    "description": "Package that will contain basic methods for handeling products and preparing them toe be used in ecommerce.",
+    "keywords": ["marshmallow"],
+    "homepage": "https://github.com/Marshmallow-Development/",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Stef",
+            "email": "stef@marshmallow.dev",
+            "homepage": "https://marshmallow.dev",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "stef@marshmallow.dev"
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.4",
+        "marshmallow/commands": "^1.0",
+        "spatie/laravel-sluggable": "^2.2",
+        "marshmallow/laravel-helpers": "^1.0",
+        "marshmallow/priceable": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Marshmallow\\Product\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Marshmallow\\Product\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Marshmallow\\Product\\ProductServiceProvider"
+            ],
+            "aliases": {
+                "Product": "Marshmallow\\Product\\Facades\\Product"
+            }
+        }
+    }
+}
