@@ -1,5 +1,5 @@
 {
-    "name": "marshmallow/package-products",
+    "name": "marshmallow/products",
     "description": "Package that will contain basic methods for handeling products and preparing them toe be used in ecommerce.",
     "keywords": ["marshmallow"],
     "homepage": "https://github.com/Marshmallow-Development/",
