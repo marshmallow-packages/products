@@ -17,5 +17,7 @@ return [
 			'currencies' => 1,
 			'vat_rates' => 3,
 		],
-	]
+	],
+
+	'default_product_view' => 'shop.product',
 ];

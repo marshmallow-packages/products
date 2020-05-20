@@ -22,7 +22,9 @@
         "marshmallow/commands": "^1.0",
         "spatie/laravel-sluggable": "^2.2",
         "marshmallow/helpers": "^1.0",
-        "marshmallow/priceable": "^1.0"
+        "marshmallow/priceable": "^1.0",
+        "whitecube/nova-flexible-content": "^0.2.2",
+        "marshmallow/dataset-google-product-categories": "^1.0"
     },
     "autoload": {
         "psr-4": {

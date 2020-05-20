@@ -7,6 +7,7 @@ use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
 use Marshmallow\Product\Models\Product;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Marshmallow\Datasets\GoogleProductCategories\Models\GoogleProductCategory;
 
 /**
  * Is sluggable
@@ -25,6 +26,11 @@ class ProductCategory extends Model
     public function products ()
     {
         return $this->belongsToMany(Product::class);
+    }
+
+    public function google ()
+    {
+        return $this->belongsTo(GoogleProductCategory::class, 'google_product_category_id');
     }
 
 	/**
