@@ -14,9 +14,9 @@ class ProductServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->loadMigrationsFrom(__DIR__.'/database/migrations');
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         $this->mergeConfigFrom(
-            __DIR__.'/config/product.php', 'product'
+            __DIR__.'/../config/product.php', 'product'
         );
 
         $this->app->singleton(Product::class, function () {
@@ -38,7 +38,7 @@ class ProductServiceProvider extends ServiceProvider
          */
         // $this->loadViewsFrom(__DIR__.'/views', 'marshmallow');
 
-        $this->loadFactoriesFrom(__DIR__.'/database/factories');
+        $this->loadFactoriesFrom(__DIR__.'/../database/factories');
 
         $this->publishes([
             // __DIR__.'/views' => resource_path('views/vendor/marshmallow'),

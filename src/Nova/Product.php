@@ -7,9 +7,12 @@ use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\MorphMany;
+use Laravel\Nova\Fields\BelongsToMany;
 
 class Product extends Resource
 {
+    public static $group = 'Products';
+
     /**
      * The model the resource corresponds to.
      *
@@ -46,6 +49,8 @@ class Product extends Resource
             Text::make('Name')->sortable(),
             config('product.nova.wysiwyg')::make('Description'),
             MorphMany::make('Prices', 'prices'),
+
+            BelongsToMany::make('ProductCategory', 'categories')
         ];
     }
 
