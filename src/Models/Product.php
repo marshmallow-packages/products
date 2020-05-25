@@ -9,8 +9,8 @@ use Marshmallow\Priceable\Traits\HasPrice;
 use Marshmallow\Priceable\Traits\Priceable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Marshmallow\Product\Models\ProductCategory;
-use Whitecube\NovaFlexibleContent\Value\FlexibleCast;
-use Whitecube\NovaFlexibleContent\Concerns\HasFlexible;
+use Marshmallow\Nova\Flexible\Value\FlexibleCast;
+use Marshmallow\Nova\Flexible\Concerns\HasFlexible;
 
 /**
  * Is sluggable

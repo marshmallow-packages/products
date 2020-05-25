@@ -12,7 +12,7 @@ use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\MorphMany;
 use Laravel\Nova\Fields\BelongsToMany;
-use Whitecube\NovaFlexibleContent\Flexible;
+use Marshmallow\Nova\Flexible\Flexible;
 
 class Product extends Resource
 {

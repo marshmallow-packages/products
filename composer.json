@@ -23,7 +23,7 @@
         "spatie/laravel-sluggable": "^2.2",
         "marshmallow/helpers": "^1.0",
         "marshmallow/priceable": "^1.0",
-        "whitecube/nova-flexible-content": "^0.2.2",
+        "marshmallow/nova-flexible": "^1.0",
         "marshmallow/feeds-google-shopping": "^1.0"
     },
     "autoload": {
