@@ -2,8 +2,8 @@
 
 namespace Marshmallow\Product\Models;
 
-use Spatie\Sluggable\HasSlug;
-use Spatie\Sluggable\SlugOptions;
+use Marshmallow\Sluggable\HasSlug;
+use Marshmallow\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
 use Marshmallow\Product\Models\Product;
 use Illuminate\Database\Eloquent\SoftDeletes;
