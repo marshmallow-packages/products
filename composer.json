@@ -25,6 +25,7 @@
         "marshmallow/priceable": "^1.0",
         "marshmallow/nova-flexible": "^1.0",
         "marshmallow/feeds-google-shopping": "^1.0"
+        "marshmallow/feeds-google-shopping": "^1.0",
     },
     "autoload": {
         "psr-4": {
