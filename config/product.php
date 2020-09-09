@@ -20,4 +20,8 @@ return [
 	],
 
 	'default_product_view' => 'shop.product',
+
+	'channels' => [
+		\Marshmallow\Channels\BolCom\Facades\BolComNovaChannel::class
+	]
 ];

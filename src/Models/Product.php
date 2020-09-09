@@ -1,6 +1,7 @@
 <?php
 
 namespace Marshmallow\Product\Models;
+
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
@@ -35,6 +36,14 @@ class Product extends Model
     protected $casts = [
         'images' => FlexibleCast::class
     ];
+
+    /**
+     * Return the amount that can be purchased right now.
+     */
+    public function freeStock()
+    {
+    	return 0;
+    }
 
     public function fullname ()
     {
