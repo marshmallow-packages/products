@@ -50,7 +50,7 @@ class ProductCategory extends Resource
             ID::make()->sortable(),
             Text::make(__('Name'), 'name')->sortable()->rules('required'),
             config('product.nova.wysiwyg')::make(__('Description'), 'description')->rules('required'),
-            BelongsTo::make(__('Google Product ategory'), 'google', GoogleProductCategory::class)
+            BelongsTo::make(__('Google Product Category'), 'google', GoogleProductCategory::class)
                 ->searchable()
                 ->nullable(),
 
