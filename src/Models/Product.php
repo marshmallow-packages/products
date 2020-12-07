@@ -5,6 +5,7 @@ namespace Marshmallow\Product\Models;
 use Marshmallow\Sluggable\HasSlug;
 use Marshmallow\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
+use Marshmallow\Product\Models\Supplier;
 use Illuminate\Database\Eloquent\Builder;
 use Marshmallow\Priceable\Traits\HasPrice;
 use Marshmallow\Priceable\Traits\Priceable;
@@ -93,6 +94,11 @@ class Product extends Model
     public function categories ()
     {
         return $this->belongsToMany(ProductCategory::class);
+    }
+
+    public function supplier ()
+    {
+        return $this->belongsToMany(Supplier::class);
     }
 
 	/**

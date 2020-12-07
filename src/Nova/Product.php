@@ -12,8 +12,11 @@ use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\MorphMany;
+use Marshmallow\Priceable\Nova\Price;
 use Laravel\Nova\Fields\BelongsToMany;
+use Marshmallow\Product\Nova\Supplier;
 use Marshmallow\Nova\Flexible\Flexible;
+use Marshmallow\Product\Nova\ProductCategory;
 use Marshmallow\Channels\Channable\Traits\ProductResourceChannel;
 
 class Product extends Resource
@@ -63,30 +66,33 @@ class Product extends Resource
 	        		[
 		                'Default' => [
 		                    ID::make()->sortable(),
-				            Text::make('Name')->sortable(),
-				            BelongsTo::make('ProductCategory', 'category'),
-				            config('product.nova.wysiwyg')::make('Intro'),
-				            config('product.nova.wysiwyg')::make('Description'),
+				            Text::make(__('Name'), 'name')->sortable(),
+				            BelongsTo::make(__('Product Category'), 'category', ProductCategory::class),
+                            BelongsTo::make(__('Supplier'), 'supplier', Supplier::class),
+				            config('product.nova.wysiwyg')::make(__('Intro'), 'intro'),
+				            config('product.nova.wysiwyg')::make(__('Description'), 'description'),
 
-				            Text::make('GTIN')->help('This should be the EAN number of this product.'),
-				            Text::make('MPN')->help('This is the product number of the manufacturer. This is only required if there is no GTIN available.'),
-				            Boolean::make('Active'),
+				            Text::make(__('GTIN'), 'gtin')->help(__('This should be the EAN number of this product.')),
+				            Text::make(__('MPN'), 'mpn')->help(
+                                __('This is the product number of the manufacturer. This is only required if there is no GTIN available.')
+                            ),
+				            Boolean::make(__('Active'), 'active'),
 		                ],
 
 		                'Media' => [
-		                	Flexible::make('Images')
-			                    ->addLayout('Image', 'images', [
-			                        Image::make('Image'),
-			                        Text::make('Alt text'),
-			                    ])->button('Add another image'),
+		                	Flexible::make(__('Images'))
+			                    ->addLayout(__('Image'), 'images', [
+			                        Image::make(__('Image'), 'image'),
+			                        Text::make(__('Alt text'), 'alt_text'),
+			                    ])->button(__('Add another image')),
 		                ],
 		            ],
 		            $this->addChannelTabs()
 	        	)
 	        ))->withToolbar(),
 
-            MorphMany::make('Prices', 'prices'),
-            BelongsToMany::make('ProductCategory', 'categories')
+            MorphMany::make(__('Prices'), 'prices', Price::class),
+            BelongsToMany::make(__('Product Category'), 'categories', ProductCategory::class)
         ];
     }
 
