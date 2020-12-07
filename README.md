@@ -22,6 +22,7 @@ php artisan db:seed --class=Marshmallow\\Priceable\\Database\\Seeds\\VatRatesSee
 ## After installation
 ```bash
 php artisan marshmallow:resource Product Product
+php artisan marshmallow:resource Supplier Product
 php artisan marshmallow:resource ProductCategory Product
 php artisan marshmallow:resource Price Priceable
 php artisan marshmallow:resource VatRate Priceable
