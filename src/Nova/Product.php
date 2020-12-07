@@ -23,6 +23,8 @@ class Product extends Resource
 
     public static $group = 'Products';
 
+    public static $group_icon = '<svg viewBox="0 0 20 20" class="sidebar-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="icon-shape"><path fill="var(--sidebar-icon)" d="M7,0 L6,0 L0,3 L0,9 L4,8 L4,20 L16,20 L16,8 L20,9 L20,3 L14,0 L13,0 C13,1.65685425 11.6568542,3 10,3 C8.34314575,3 7,1.65685425 7,0 Z" id="Combined-Shape"></path></g></g></svg>';
+
     /**
      * The model the resource corresponds to.
      *

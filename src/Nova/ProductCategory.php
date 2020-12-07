@@ -9,6 +9,7 @@ use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
+use Marshmallow\Datasets\GoogleProductCategories\Nova\GoogleProductCategory;
 
 class ProductCategory extends Resource
 {
@@ -49,7 +50,7 @@ class ProductCategory extends Resource
             ID::make()->sortable(),
             Text::make('Name')->sortable(),
             config('product.nova.wysiwyg')::make('Description'),
-            BelongsTo::make('GoogleProductCategory', 'google')->searchable(),
+            BelongsTo::make('GoogleProductCategory', 'google', GoogleProductCategory::class)->searchable(),
 
             BelongsToMany::make('Product', 'products')
         ];
