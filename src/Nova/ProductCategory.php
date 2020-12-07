@@ -48,11 +48,13 @@ class ProductCategory extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('Name')->sortable(),
-            config('product.nova.wysiwyg')::make('Description'),
-            BelongsTo::make('GoogleProductCategory', 'google', GoogleProductCategory::class)->searchable(),
+            Text::make(__('Name'), 'name')->sortable(),
+            config('product.nova.wysiwyg')::make(__('Description'), 'description'),
+            BelongsTo::make(__('Google Product ategory'), 'google', GoogleProductCategory::class)
+                ->searchable()
+                ->nullable(),
 
-            BelongsToMany::make('Product', 'products')
+            BelongsToMany::make(__('Product'), 'products')
         ];
     }
 
