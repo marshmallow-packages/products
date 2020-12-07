@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
 use Eminiarts\Tabs\TabsOnEdit;
 use Laravel\Nova\Fields\Image;
+use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\MorphMany;
@@ -17,6 +18,7 @@ use Laravel\Nova\Fields\BelongsToMany;
 use Marshmallow\Product\Nova\Supplier;
 use Marshmallow\Nova\Flexible\Flexible;
 use Marshmallow\Product\Nova\ProductCategory;
+use Marshmallow\Product\Nova\Relationships\ProductSupplier;
 use Marshmallow\Channels\Channable\Traits\ProductResourceChannel;
 
 class Product extends Resource
@@ -68,7 +70,6 @@ class Product extends Resource
 		                    ID::make()->sortable(),
 				            Text::make(__('Name'), 'name')->sortable(),
 				            BelongsTo::make(__('Product Category'), 'category', ProductCategory::class),
-                            BelongsTo::make(__('Supplier'), 'supplier', Supplier::class),
 				            config('product.nova.wysiwyg')::make(__('Intro'), 'intro'),
 				            config('product.nova.wysiwyg')::make(__('Description'), 'description'),
 
@@ -93,7 +94,9 @@ class Product extends Resource
 
             MorphMany::make(__('Prices'), 'prices', Price::class),
             BelongsToMany::make(__('Product Category'), 'categories', ProductCategory::class),
-            BelongsToMany::make(__('Suppliers'), 'suppliers', Supplier::class),
+            BelongsToMany::make(__('Suppliers'), 'suppliers', Supplier::class)->fields(function () {
+                return ProductSupplier::fields();
+            }),
         ];
     }
 

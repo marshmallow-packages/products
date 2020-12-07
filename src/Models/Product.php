@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Marshmallow\Product\Models\ProductCategory;
 use Marshmallow\Nova\Flexible\Value\FlexibleCast;
 use Marshmallow\Nova\Flexible\Concerns\HasFlexible;
+use Marshmallow\Product\Nova\Relationships\ProductSupplier;
 
 /**
  * Is sluggable
@@ -98,7 +99,10 @@ class Product extends Model
 
     public function suppliers ()
     {
-        return $this->belongsToMany(Supplier::class);
+        return $this->belongsToMany(Supplier::class)
+                    ->withPivot(
+                        ProductSupplier::withPivot()
+                    );
     }
 
 	/**
