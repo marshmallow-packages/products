@@ -92,7 +92,8 @@ class Product extends Resource
 	        ))->withToolbar(),
 
             MorphMany::make(__('Prices'), 'prices', Price::class),
-            BelongsToMany::make(__('Product Category'), 'categories', ProductCategory::class)
+            BelongsToMany::make(__('Product Category'), 'categories', ProductCategory::class),
+            BelongsToMany::make(__('Suppliers'), 'suppliers', Supplier::class),
         ];
     }
 

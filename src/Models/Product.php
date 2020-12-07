@@ -96,7 +96,7 @@ class Product extends Model
         return $this->belongsToMany(ProductCategory::class);
     }
 
-    public function supplier ()
+    public function suppliers ()
     {
         return $this->belongsToMany(Supplier::class);
     }
