@@ -25,6 +25,7 @@
         "marshmallow/priceable": "^1.1",
         "marshmallow/nova-flexible": "^1.0",
         "marshmallow/feeds-google-shopping": "^1.0",
+        "marshmallow/channels-channable": "^1.0",
         "eminiarts/nova-tabs": "^1.2"
     },
     "autoload": {
