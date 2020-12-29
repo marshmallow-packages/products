@@ -4,10 +4,11 @@ namespace Marshmallow\Product\Nova\Relationships;
 
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Number;
+use Marshmallow\HelperFunctions\NovaRelationshipHelper;
 
-class ProductSupplier
+class ProductSupplier extends NovaRelationshipHelper
 {
-    public static function withPivot()
+    public static function withPivot(): array
     {
         return [
             'supplier_product_identifier',
@@ -15,7 +16,7 @@ class ProductSupplier
         ];
     }
 
-    public static function fields()
+    public static function fields(): array
     {
         return [
             Text::make(__('Supplier Product ID'), 'supplier_product_identifier'),
