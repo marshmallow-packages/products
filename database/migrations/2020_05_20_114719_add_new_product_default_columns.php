@@ -13,13 +13,35 @@ class AddNewProductDefaultColumns extends Migration
      */
     public function up()
     {
-        Schema::table('products', function (Blueprint $table) {
-            $table->text('intro')->nullable()->default(null)->after('slug');
-        	$table->json('images')->nullable()->default(null)->after('description');
-        	$table->string('mpn')->nullable()->default(null)->after('slug');
-        	$table->string('gtin')->nullable()->default(null)->after('slug');
-            $table->boolean('active')->default(true)->after('images');
-        });
+        $this->createColumnIfDoesntExist(
+            'products', 'intro', function (Blueprint $table) {
+                $table->text('intro')->nullable()->default(null)->after('slug');
+            }
+        );
+
+        $this->createColumnIfDoesntExist(
+            'products', 'images', function (Blueprint $table) {
+                $table->json('images')->nullable()->default(null)->after('description');
+            }
+        );
+
+        $this->createColumnIfDoesntExist(
+            'products', 'mpn', function (Blueprint $table) {
+                $table->string('mpn')->nullable()->default(null)->after('slug');
+            }
+        );
+
+        $this->createColumnIfDoesntExist(
+            'products', 'gtin', function (Blueprint $table) {
+                $table->string('gtin')->nullable()->default(null)->after('slug');
+            }
+        );
+
+        $this->createColumnIfDoesntExist(
+            'products', 'active', function (Blueprint $table) {
+                $table->boolean('active')->default(true)->after('images');
+            }
+        );
     }
 
     /**
