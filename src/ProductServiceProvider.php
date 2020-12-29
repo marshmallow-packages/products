@@ -22,7 +22,7 @@ class ProductServiceProvider extends ServiceProvider
         $this->app->singleton(Product::class, function () {
             return new Product();
         });
-        
+
         $this->app->alias(Product::class, 'product');
     }
 
@@ -41,8 +41,8 @@ class ProductServiceProvider extends ServiceProvider
         $this->loadFactoriesFrom(__DIR__.'/../database/factories');
 
         $this->publishes([
-            // __DIR__.'/views' => resource_path('views/vendor/marshmallow'),
-        ]);
+            __DIR__.'/../config/product.php' => config_path('product.php'),
+        ], 'config');
 
 
         /**
