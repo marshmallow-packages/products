@@ -21,10 +21,12 @@ class AddSuppliersTable extends Migration
             $table->softDeletes();
         });
 
-        Schema::table('products', function (Blueprint $table) {
-            $table->unsignedBigInteger('supplier_id')->nullable()->default(null)->after('product_category_id');
-            $table->foreign('supplier_id')->references('id')->on('suppliers');
-        });
+        $this->createColumnIfDoesntExist(
+            'products', 'supplier_id', function (Blueprint $table) {
+                $table->unsignedBigInteger('supplier_id')->nullable()->default(null)->after('product_category_id');
+                $table->foreign('supplier_id')->references('id')->on('suppliers');
+            }
+        );
     }
 
     /**
