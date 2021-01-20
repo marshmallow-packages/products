@@ -25,13 +25,14 @@ use Marshmallow\Product\Nova\Relationships\ProductSupplier;
 
 class Product extends Model
 {
+    use HasSlug;
+    use Priceable;
+    use SoftDeletes;
     use HasFlexible;
 
     const IN_STOCK = 'IN_STOCK';
     const OUT_OF_STOCK = 'OUT_OF_STOCK';
     const PREORDER = 'PREORDER';
-
-	use HasSlug, Priceable, SoftDeletes;
 
 	protected $guarded = [];
 
