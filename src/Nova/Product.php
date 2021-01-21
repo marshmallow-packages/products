@@ -9,19 +9,17 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
 use Eminiarts\Tabs\TabsOnEdit;
 use Laravel\Nova\Fields\Image;
-use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\MorphMany;
 use Laravel\Nova\Fields\BelongsToMany;
 use Marshmallow\Nova\Flexible\Flexible;
-use Marshmallow\Product\Nova\Relationships\ProductSupplier;
 use Marshmallow\Channels\Channable\Traits\ProductResourceChannel;
 
 class Product extends Resource
 {
-	use TabsOnEdit;
-	use ProductResourceChannel;
+    use TabsOnEdit;
+    use ProductResourceChannel;
 
     public static $group = 'Products';
 
@@ -59,35 +57,35 @@ class Product extends Resource
     public function fields(Request $request)
     {
         return [
-        	(new Tabs(
-        		'Product Details',
-	        	array_merge(
-	        		[
-		                'Default' => [
-		                    ID::make()->sortable(),
-				            Text::make(__('Name'), 'name')->sortable(),
-				            BelongsTo::make(__('Product Category'), 'category', config('product.nova.resources.product_category')),
-				            config('product.nova.wysiwyg')::make(__('Intro'), 'intro'),
-				            config('product.nova.wysiwyg')::make(__('Description'), 'description'),
+            (new Tabs(
+                'Product Details',
+                array_merge(
+                    [
+                        'Default' => [
+                            ID::make()->sortable(),
+                            Text::make(__('Name'), 'name')->sortable(),
+                            BelongsTo::make(__('Product Category'), 'category', config('product.nova.resources.product_category')),
+                            config('product.nova.wysiwyg')::make(__('Intro'), 'intro'),
+                            config('product.nova.wysiwyg')::make(__('Description'), 'description'),
 
-				            Text::make(__('GTIN'), 'gtin')->help(__('This should be the EAN number of this product.')),
-				            Text::make(__('MPN'), 'mpn')->help(
+                            Text::make(__('GTIN'), 'gtin')->help(__('This should be the EAN number of this product.')),
+                            Text::make(__('MPN'), 'mpn')->help(
                                 __('This is the product number of the manufacturer. This is only required if there is no GTIN available.')
                             ),
-				            Boolean::make(__('Active'), 'active'),
-		                ],
+                            Boolean::make(__('Active'), 'active'),
+                        ],
 
-		                'Media' => [
-		                	Flexible::make(__('Images'))
-			                    ->addLayout(__('Image'), 'images', [
-			                        Image::make(__('Image'), 'image'),
-			                        Text::make(__('Alt text'), 'alt_text'),
-			                    ])->button(__('Add another image')),
-		                ],
-		            ],
-		            $this->addChannelTabs()
-	        	)
-	        ))->withToolbar(),
+                        'Media' => [
+                            Flexible::make(__('Images'))
+                                ->addLayout(__('Image'), 'images', [
+                                    Image::make(__('Image'), 'image'),
+                                    Text::make(__('Alt text'), 'alt_text'),
+                                ])->button(__('Add another image')),
+                        ],
+                    ],
+                    $this->addChannelTabs()
+                )
+            ))->withToolbar(),
 
             MorphMany::make(__('Prices'), 'prices', config('product.nova.resources.price')),
             BelongsToMany::make(__('Product Category'), 'categories', config('product.nova.resources.product_category')),

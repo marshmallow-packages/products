@@ -5,9 +5,7 @@ namespace Marshmallow\Product\Nova;
 use App\Nova\Resource;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\BelongsToMany;
-use Marshmallow\Product\Nova\Relationships\ProductSupplier;
 
 class Supplier extends Resource
 {

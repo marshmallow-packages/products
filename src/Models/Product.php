@@ -3,11 +3,8 @@
 namespace Marshmallow\Product\Models;
 
 use Marshmallow\Sluggable\HasSlug;
-use Marshmallow\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
-use Marshmallow\Product\Models\Supplier;
 use Illuminate\Database\Eloquent\Builder;
-use Marshmallow\Priceable\Traits\HasPrice;
 use Marshmallow\Priceable\Traits\Priceable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Marshmallow\Nova\Flexible\Value\FlexibleCast;
@@ -23,18 +20,19 @@ use Marshmallow\Nova\Flexible\Concerns\HasFlexible;
 
 class Product extends Model
 {
+    use HasSlug;
+    use Priceable;
+    use SoftDeletes;
     use HasFlexible;
 
     const IN_STOCK = 'IN_STOCK';
     const OUT_OF_STOCK = 'OUT_OF_STOCK';
     const PREORDER = 'PREORDER';
 
-	use HasSlug, Priceable, SoftDeletes;
-
-	protected $guarded = [];
+    protected $guarded = [];
 
     protected $casts = [
-        'images' => FlexibleCast::class
+        'images' => FlexibleCast::class,
     ];
 
     /**
@@ -42,50 +40,50 @@ class Product extends Model
      */
     public function freeStock()
     {
-    	return 0;
+        return 0;
     }
 
-    public function fullname ()
+    public function fullname()
     {
         return $this->name;
     }
 
-    public function hasImage ()
+    public function hasImage()
     {
         return ($this->images->count() > 0);
     }
 
-    public function firstImage ()
+    public function firstImage()
     {
         return $this->images->first();
     }
 
-    public function firstImagePath ()
+    public function firstImagePath()
     {
         return asset('storage/' . $this->firstImage()->image);
     }
 
-    public function getAvailability ()
+    public function getAvailability()
     {
         return self::IN_STOCK;
     }
 
-    public function getCondition ()
+    public function getCondition()
     {
         return 'new';
     }
 
-    public function route ()
+    public function route()
     {
         return route('product.detail', $this);
     }
 
-    public function scopeActive (Builder $builder)
+    public function scopeActive(Builder $builder)
     {
         $builder->where('active', 1);
     }
 
-    public function category ()
+    public function category()
     {
         return $this->belongsTo(
             config('product.models.product_category'),
@@ -93,14 +91,14 @@ class Product extends Model
         );
     }
 
-    public function categories ()
+    public function categories()
     {
         return $this->belongsToMany(
             config('product.models.product_category')
         );
     }
 
-    public function suppliers ()
+    public function suppliers()
     {
         return $this->belongsToMany(config('product.models.supplier'))
                     ->withPivot(

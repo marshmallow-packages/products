@@ -4,9 +4,7 @@ namespace Marshmallow\Product\Models;
 
 use Marshmallow\Sluggable\HasSlug;
 use Illuminate\Database\Eloquent\Model;
-use Marshmallow\Product\Models\Product;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Marshmallow\Product\Nova\Relationships\ProductSupplier;
 
 class Supplier extends Model
 {
@@ -14,7 +12,7 @@ class Supplier extends Model
 
     protected $guarded = [];
 
-    public function products ()
+    public function products()
     {
         return $this->belongsToMany(config('app.models.product'))
                     ->withPivot(

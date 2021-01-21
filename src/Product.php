@@ -4,5 +4,5 @@ namespace Marshmallow\Product;
 
 class Product
 {
-	//
+    //
 }

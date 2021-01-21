@@ -9,12 +9,12 @@ class ProductObserver
 {
     public function created(Product $product)
     {
-    	/**
+        /**
     	 * Handle channels like bol.com etc.
     	 */
-    	if (class_exists(Channable::class)) {
-    		Channable::observe('created', $product);
-    	}
+        if (class_exists(Channable::class)) {
+            Channable::observe('created', $product);
+        }
     }
 
     /**
@@ -30,9 +30,9 @@ class ProductObserver
         /**
     	 * Handle channels like bol.com etc.
     	 */
-    	if (class_exists(Channable::class)) {
-    		Channable::observe('updated', $product);
-    	}
+        if (class_exists(Channable::class)) {
+            Channable::observe('updated', $product);
+        }
     }
 
     /**
@@ -48,9 +48,9 @@ class ProductObserver
         /**
     	 * Handle channels like bol.com etc.
     	 */
-    	if (class_exists(Channable::class)) {
-    		Channable::observe('deleted', $product);
-    	}
+        if (class_exists(Channable::class)) {
+            Channable::observe('deleted', $product);
+        }
     }
 
     /**
@@ -66,9 +66,9 @@ class ProductObserver
         /**
     	 * Handle channels like bol.com etc.
     	 */
-    	if (class_exists(Channable::class)) {
-    		Channable::observe('restored', $product);
-    	}
+        if (class_exists(Channable::class)) {
+            Channable::observe('restored', $product);
+        }
     }
 
     /**
@@ -84,8 +84,8 @@ class ProductObserver
         /**
     	 * Handle channels like bol.com etc.
     	 */
-    	if (class_exists(Channable::class)) {
-    		Channable::observe('forceDeleted', $product);
-    	}
+        if (class_exists(Channable::class)) {
+            Channable::observe('forceDeleted', $product);
+        }
     }
 }
