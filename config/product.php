@@ -18,7 +18,7 @@ return [
 	 * op updates wel erg fijn.
 	 */
 	'nova' => [
-		'wysiwyg' => \Laravel\Nova\Fields\Trix::class,
+		'wysiwyg' => env('NOVA_WYSIWYG', \Laravel\Nova\Fields\Trix::class),
 
 		'prices_are_including_vat' => true,
 
