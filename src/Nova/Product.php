@@ -13,11 +13,8 @@ use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\MorphMany;
-use Marshmallow\Priceable\Nova\Price;
 use Laravel\Nova\Fields\BelongsToMany;
-use Marshmallow\Product\Nova\Supplier;
 use Marshmallow\Nova\Flexible\Flexible;
-use Marshmallow\Product\Nova\ProductCategory;
 use Marshmallow\Product\Nova\Relationships\ProductSupplier;
 use Marshmallow\Channels\Channable\Traits\ProductResourceChannel;
 
@@ -69,7 +66,7 @@ class Product extends Resource
 		                'Default' => [
 		                    ID::make()->sortable(),
 				            Text::make(__('Name'), 'name')->sortable(),
-				            BelongsTo::make(__('Product Category'), 'category', ProductCategory::class),
+				            BelongsTo::make(__('Product Category'), 'category', config('product.nova.resources.product_category')),
 				            config('product.nova.wysiwyg')::make(__('Intro'), 'intro'),
 				            config('product.nova.wysiwyg')::make(__('Description'), 'description'),
 
@@ -92,10 +89,10 @@ class Product extends Resource
 	        	)
 	        ))->withToolbar(),
 
-            MorphMany::make(__('Prices'), 'prices', Price::class),
-            BelongsToMany::make(__('Product Category'), 'categories', ProductCategory::class),
-            BelongsToMany::make(__('Suppliers'), 'suppliers', Supplier::class)->fields(function () {
-                return ProductSupplier::fields();
+            MorphMany::make(__('Prices'), 'prices', config('product.nova.resources.price')),
+            BelongsToMany::make(__('Product Category'), 'categories', config('product.nova.resources.product_category')),
+            BelongsToMany::make(__('Suppliers'), 'suppliers', config('product.nova.resources.supplier'))->fields(function () {
+                return config('product.nova.relationships.product_supplier')::fields();
             }),
         ];
     }

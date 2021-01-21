@@ -47,7 +47,7 @@ class Supplier extends Resource
         return [
             Text::make(__('Name'), 'name'),
             BelongsToMany::make(__('Product'), 'products')->fields(function () {
-                return ProductSupplier::fields();
+                return config('product.nova.relationships.product_supplier')::fields();
             }),
         ];
     }

@@ -10,10 +10,8 @@ use Illuminate\Database\Eloquent\Builder;
 use Marshmallow\Priceable\Traits\HasPrice;
 use Marshmallow\Priceable\Traits\Priceable;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Marshmallow\Product\Models\ProductCategory;
 use Marshmallow\Nova\Flexible\Value\FlexibleCast;
 use Marshmallow\Nova\Flexible\Concerns\HasFlexible;
-use Marshmallow\Product\Nova\Relationships\ProductSupplier;
 
 /**
  * Is sluggable
@@ -89,29 +87,24 @@ class Product extends Model
 
     public function category ()
     {
-        return $this->belongsTo(ProductCategory::class, 'product_category_id');
+        return $this->belongsTo(
+            config('product.models.product_category'),
+            'product_category_id'
+        );
     }
 
     public function categories ()
     {
-        return $this->belongsToMany(ProductCategory::class);
+        return $this->belongsToMany(
+            config('product.models.product_category')
+        );
     }
 
     public function suppliers ()
     {
-        return $this->belongsToMany(Supplier::class)
+        return $this->belongsToMany(config('product.models.supplier'))
                     ->withPivot(
-                        ProductSupplier::withPivot()
+                        config('product.nova.relationships.product_supplier')::withPivot()
                     );
-    }
-
-	/**
-     * Get the options for generating the slug.
-     */
-    public function getSlugOptions(): SlugOptions
-    {
-        return SlugOptions::create()
-            ->generateSlugsFrom('name')
-            ->saveSlugsTo('slug');
     }
 }

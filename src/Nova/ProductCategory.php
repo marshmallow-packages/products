@@ -54,7 +54,7 @@ class ProductCategory extends Resource
                 ->searchable()
                 ->nullable(),
 
-            BelongsToMany::make(__('Product'), 'products')
+            BelongsToMany::make(__('Product'), 'products', config('product.nova.resources.product'))
         ];
     }
 

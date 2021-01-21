@@ -16,9 +16,9 @@ class Supplier extends Model
 
     public function products ()
     {
-        return $this->belongsToMany(Product::class)
+        return $this->belongsToMany(config('app.models.product'))
                     ->withPivot(
-                        ProductSupplier::withPivot()
+                        config('product.nova.relationships.product_supplier')::withPivot()
                     );
     }
 }

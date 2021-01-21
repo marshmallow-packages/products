@@ -5,7 +5,6 @@ namespace Marshmallow\Product\Models;
 use Marshmallow\Sluggable\HasSlug;
 use Marshmallow\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
-use Marshmallow\Product\Models\Product;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Marshmallow\Datasets\GoogleProductCategories\Models\GoogleProductCategory;
 
@@ -25,21 +24,13 @@ class ProductCategory extends Model
 
     public function products ()
     {
-        return $this->belongsToMany(Product::class);
+        return $this->belongsToMany(
+            config('product.models.product')
+        );
     }
 
     public function google ()
     {
         return $this->belongsTo(GoogleProductCategory::class, 'google_product_category_id');
-    }
-
-	/**
-     * Get the options for generating the slug.
-     */
-    public function getSlugOptions(): SlugOptions
-    {
-        return SlugOptions::create()
-            ->generateSlugsFrom('name')
-            ->saveSlugsTo('slug');
     }
 }
