@@ -3,17 +3,12 @@
 namespace Marshmallow\Product\Models;
 
 use Marshmallow\Sluggable\HasSlug;
-use Marshmallow\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
-use Marshmallow\Product\Models\Supplier;
 use Illuminate\Database\Eloquent\Builder;
-use Marshmallow\Priceable\Traits\HasPrice;
 use Marshmallow\Priceable\Traits\Priceable;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Marshmallow\Product\Models\ProductCategory;
 use Marshmallow\Nova\Flexible\Value\FlexibleCast;
 use Marshmallow\Nova\Flexible\Concerns\HasFlexible;
-use Marshmallow\Product\Nova\Relationships\ProductSupplier;
 
 /**
  * Is sluggable
@@ -34,10 +29,10 @@ class Product extends Model
     const OUT_OF_STOCK = 'OUT_OF_STOCK';
     const PREORDER = 'PREORDER';
 
-	protected $guarded = [];
+    protected $guarded = [];
 
     protected $casts = [
-        'images' => FlexibleCast::class
+        'images' => FlexibleCast::class,
     ];
 
     /**
@@ -45,74 +40,69 @@ class Product extends Model
      */
     public function freeStock()
     {
-    	return 0;
+        return 0;
     }
 
-    public function fullname ()
+    public function fullname()
     {
         return $this->name;
     }
 
-    public function hasImage ()
+    public function hasImage()
     {
         return ($this->images->count() > 0);
     }
 
-    public function firstImage ()
+    public function firstImage()
     {
         return $this->images->first();
     }
 
-    public function firstImagePath ()
+    public function firstImagePath()
     {
         return asset('storage/' . $this->firstImage()->image);
     }
 
-    public function getAvailability ()
+    public function getAvailability()
     {
         return self::IN_STOCK;
     }
 
-    public function getCondition ()
+    public function getCondition()
     {
         return 'new';
     }
 
-    public function route ()
+    public function route()
     {
         return route('product.detail', $this);
     }
 
-    public function scopeActive (Builder $builder)
+    public function scopeActive(Builder $builder)
     {
         $builder->where('active', 1);
     }
 
-    public function category ()
+    public function category()
     {
-        return $this->belongsTo(ProductCategory::class, 'product_category_id');
+        return $this->belongsTo(
+            config('product.models.product_category'),
+            'product_category_id'
+        );
     }
 
-    public function categories ()
+    public function categories()
     {
-        return $this->belongsToMany(ProductCategory::class);
+        return $this->belongsToMany(
+            config('product.models.product_category')
+        );
     }
 
-    public function suppliers ()
+    public function suppliers()
     {
-        return $this->belongsToMany(Supplier::class)
+        return $this->belongsToMany(config('product.models.supplier'))
                     ->withPivot(
-                        ProductSupplier::withPivot()
+                        config('product.nova.relationships.product_supplier')::withPivot()
                     );
-    }
-
-	/**
-     * Get the options for generating the slug.
-     */
-    public function getSlugOptions(): SlugOptions
-    {
-        return SlugOptions::create()
-            ->generateSlugsFrom('name')
-            ->saveSlugsTo('slug');
     }
 }

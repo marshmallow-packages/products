@@ -6,7 +6,6 @@ use App\Nova\Resource;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
 use Marshmallow\Datasets\GoogleProductCategories\Nova\GoogleProductCategory;
@@ -54,7 +53,7 @@ class ProductCategory extends Resource
                 ->searchable()
                 ->nullable(),
 
-            BelongsToMany::make(__('Product'), 'products')
+            BelongsToMany::make(__('Product'), 'products', config('product.nova.resources.product')),
         ];
     }
 

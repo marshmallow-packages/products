@@ -2,7 +2,6 @@
 
 namespace Marshmallow\Product;
 
-use Marshmallow\Product\Product;
 use Illuminate\Support\ServiceProvider;
 
 class ProductServiceProvider extends ServiceProvider
@@ -16,7 +15,8 @@ class ProductServiceProvider extends ServiceProvider
     {
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         $this->mergeConfigFrom(
-            __DIR__.'/../config/product.php', 'product'
+            __DIR__.'/../config/product.php',
+            'product'
         );
 
         $this->app->singleton(Product::class, function () {
