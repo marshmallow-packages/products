@@ -28,6 +28,22 @@ class ProductCategory extends Model
         );
     }
 
+    public function parent()
+    {
+        return $this->belongsTo(
+            config('product.models.product_category'),
+            'parent_id'
+        );
+    }
+
+    public function children()
+    {
+        return $this->hasMany(
+            config('product.models.product_category'),
+            'parent_id'
+        );
+    }
+
     public function google()
     {
         return $this->belongsTo(GoogleProductCategory::class, 'google_product_category_id');
