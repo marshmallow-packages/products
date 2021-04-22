@@ -10,6 +10,7 @@ use Laravel\Nova\Fields\Text;
 use Eminiarts\Tabs\TabsOnEdit;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Boolean;
+use Marshmallow\Seoable\Seoable;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\MorphMany;
 use Laravel\Nova\Fields\BelongsToMany;
@@ -81,6 +82,9 @@ class Product extends Resource
                                     Image::make(__('Image'), 'image'),
                                     Text::make(__('Alt text'), 'alt_text'),
                                 ])->button(__('Add another image')),
+                        ],
+                        'SEO' => [
+                            Seoable::make('SEO'),
                         ],
                     ],
                     $this->addChannelTabs()
