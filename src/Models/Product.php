@@ -4,6 +4,7 @@ namespace Marshmallow\Product\Models;
 
 use Marshmallow\Sluggable\HasSlug;
 use Illuminate\Database\Eloquent\Model;
+use Marshmallow\Seoable\Traits\Seoable;
 use Illuminate\Database\Eloquent\Builder;
 use Marshmallow\Priceable\Traits\Priceable;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -21,6 +22,7 @@ use Marshmallow\Nova\Flexible\Concerns\HasFlexible;
 class Product extends Model
 {
     use HasSlug;
+    use Seoable;
     use Priceable;
     use SoftDeletes;
     use HasFlexible;
@@ -101,8 +103,8 @@ class Product extends Model
     public function suppliers()
     {
         return $this->belongsToMany(config('product.models.supplier'))
-                    ->withPivot(
-                        config('product.nova.relationships.product_supplier')::withPivot()
-                    );
+            ->withPivot(
+                config('product.nova.relationships.product_supplier')::withPivot()
+            );
     }
 }

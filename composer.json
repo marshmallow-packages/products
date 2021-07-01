@@ -1,7 +1,9 @@
 {
     "name": "marshmallow/products",
     "description": "Package that will contain basic methods for handeling products and preparing them toe be used in ecommerce.",
-    "keywords": ["marshmallow"],
+    "keywords": [
+        "marshmallow"
+    ],
     "homepage": "https://github.com/Marshmallow-Development/",
     "type": "library",
     "license": "MIT",
@@ -20,6 +22,7 @@
     "require": {
         "php": "^7.4|^8.0",
         "marshmallow/commands": "^1.0",
+        "marshmallow/seoable": "^2.0",
         "marshmallow/sluggable": "^1.0",
         "marshmallow/helpers": "^2.0",
         "marshmallow/priceable": "^1.1",
