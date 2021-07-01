@@ -24,8 +24,7 @@ class Product extends Resource
 
     public static $group = 'Products';
 
-    public static $group_icon = '<svg viewBox="0 0 20 20" class="sidebar-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="icon-shape"><path fill="var(--sidebar-icon)" d="M7,0 L6,0 L0,3 L0,9 L4,8 L4,20 L16,20 L16,8 L20,9 L20,3 L14,0 L13,0 C13,1.65685425 11.6568542,3 10,3 C8.34314575,3 7,1.65685425 7,0 Z" id="Combined-Shape"></path></g></g></svg>';
-
+    public static $group_icon = '<svg xmlns="http://www.w3.org/2000/svg" class="sidebar-icon" height="24" viewBox="0 0 24 24" width="24"><path fill="var(--sidebar-icon)" d="M11 15h2v2h-2v-2zm0-8h2v6h-2V7zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>';
     /**
      * The model the resource corresponds to.
      *
