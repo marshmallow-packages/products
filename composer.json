@@ -20,7 +20,7 @@
     },
     "minimum-stability": "dev",
     "require": {
-        "php": "^7.4|^8.0",
+        "php": "^7.4|^8.0|^8.1",
         "marshmallow/commands": "^1.0",
         "marshmallow/seoable": "^2.0",
         "marshmallow/sluggable": "^1.0",
