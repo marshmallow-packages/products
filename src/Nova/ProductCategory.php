@@ -9,6 +9,7 @@ use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
+use Marshmallow\Product\Rules\ValidateParentCategory;
 use Marshmallow\Datasets\GoogleProductCategories\Nova\GoogleProductCategory;
 
 class ProductCategory extends Resource
@@ -48,7 +49,9 @@ class ProductCategory extends Resource
     {
         return [
             ID::make()->sortable(),
-            BelongsTo::make(__('Parent'), 'parent', config('product.nova.resources.product_category'))->exceptOnForms(),
+            BelongsTo::make(__('Parent'), 'parent', config('product.nova.resources.product_category'))->rules([
+                new ValidateParentCategory($request->resourceId),
+            ])->nullable(),
             Text::make(__('Name'), 'name')->sortable()->rules('required'),
             config('product.nova.wysiwyg')::make(__('Description'), 'description')->rules('required'),
             BelongsTo::make(__('Google Product Category'), 'google', GoogleProductCategory::class)
