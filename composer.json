@@ -25,7 +25,7 @@
         "marshmallow/seoable": "^v3.0.0",
         "marshmallow/sluggable": "^v1.4.0",
         "marshmallow/helpers": "^v2.12.1",
-        "marshmallow/priceable": "^v2.2.0",
+        "marshmallow/priceable": "^v3.0.0",
         "marshmallow/nova-flexible": "^v2.0.0",
         "marshmallow/feeds-google-shopping": "^1.0",
         "marshmallow/channels-channable": "^1.0",
