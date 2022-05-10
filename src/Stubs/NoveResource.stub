@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use Laravel\Nova\Http\Requests\NovaRequest;
 use Marshmallow\Product\Nova\{{ resource_name }} as Nova{{ resource_name }}Module;
 
 class {{ resource_name }} extends Nova{{ resource_name }}Module
@@ -10,35 +11,35 @@ class {{ resource_name }} extends Nova{{ resource_name }}Module
     // public static $title = 'name';
     // public static $search = ['name'];
 
-    public function fields(Request $request)
+    public function fields(NovaRequest $request)
     {
         return array_merge(parent::fields($request), [
     		//
     	]);
     }
 
-    public function cards(Request $request)
+    public function cards(NovaRequest $request)
     {
         return array_merge(parent::cards($request), [
     		//
     	]);
     }
 
-    public function filters(Request $request)
+    public function filters(NovaRequest $request)
     {
         return array_merge(parent::filters($request), [
     		//
     	]);
     }
 
-    public function lenses(Request $request)
+    public function lenses(NovaRequest $request)
     {
         return array_merge(parent::lenses($request), [
     		//
     	]);
     }
 
-    public function actions(Request $request)
+    public function actions(NovaRequest $request)
     {
         return array_merge(parent::actions($request), [
     		//
