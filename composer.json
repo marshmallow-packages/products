@@ -29,7 +29,7 @@
         "marshmallow/nova-flexible": "^v2.0.0",
         "marshmallow/feeds-google-shopping": "^1.0",
         "marshmallow/channels-channable": "^1.0",
-        "marshmallow/nova-tabs": "^2.0",
+        "marshmallow/nova-tabs": "^2.0 || ^9999999.0",
         "laravel/nova": "^4.0"
     },
     "repositories": [
