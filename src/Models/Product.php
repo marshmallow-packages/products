@@ -42,17 +42,17 @@ class Product extends Model
     /**
      * Return the amount that can be purchased right now.
      */
-    public function freeStock(): int
+    public function freeStock()
     {
         return 0;
     }
 
-    public function fullname(): string
+    public function fullname()
     {
         return $this->name;
     }
 
-    public function hasImage(): bool
+    public function hasImage()
     {
         return ($this->images->count() > 0);
     }
@@ -62,27 +62,27 @@ class Product extends Model
         return $this->images->first();
     }
 
-    public function firstImagePath(): string
+    public function firstImagePath()
     {
         return asset('storage/' . $this->firstImage()->image);
     }
 
-    public function getAvailability(): string
+    public function getAvailability()
     {
         return self::IN_STOCK;
     }
 
-    public function getCondition(): string
+    public function getCondition()
     {
         return 'new';
     }
 
-    public function route(): string
+    public function route()
     {
         return route('product.detail', $this);
     }
 
-    public function scopeActive(Builder $builder): void
+    public function scopeActive(Builder $builder)
     {
         $builder->where('active', 1);
     }
