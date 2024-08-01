@@ -10,6 +10,8 @@ use Marshmallow\Priceable\Traits\Priceable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Marshmallow\Nova\Flexible\Value\FlexibleCast;
 use Marshmallow\Nova\Flexible\Concerns\HasFlexible;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
  * Is sluggable
@@ -40,17 +42,17 @@ class Product extends Model
     /**
      * Return the amount that can be purchased right now.
      */
-    public function freeStock()
+    public function freeStock(): int
     {
         return 0;
     }
 
-    public function fullname()
+    public function fullname(): string
     {
         return $this->name;
     }
 
-    public function hasImage()
+    public function hasImage(): bool
     {
         return ($this->images->count() > 0);
     }
@@ -60,32 +62,32 @@ class Product extends Model
         return $this->images->first();
     }
 
-    public function firstImagePath()
+    public function firstImagePath(): string
     {
         return asset('storage/' . $this->firstImage()->image);
     }
 
-    public function getAvailability()
+    public function getAvailability(): string
     {
         return self::IN_STOCK;
     }
 
-    public function getCondition()
+    public function getCondition(): string
     {
         return 'new';
     }
 
-    public function route()
+    public function route(): string
     {
         return route('product.detail', $this);
     }
 
-    public function scopeActive(Builder $builder)
+    public function scopeActive(Builder $builder): void
     {
         $builder->where('active', 1);
     }
 
-    public function category()
+    public function category(): BelongsTo
     {
         return $this->belongsTo(
             config('product.models.product_category'),
@@ -93,14 +95,14 @@ class Product extends Model
         );
     }
 
-    public function categories()
+    public function categories(): BelongsToMany
     {
         return $this->belongsToMany(
             config('product.models.product_category')
         );
     }
 
-    public function suppliers()
+    public function suppliers(): BelongsToMany
     {
         return $this->belongsToMany(config('product.models.supplier'))
             ->withPivot(
