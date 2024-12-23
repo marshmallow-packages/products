@@ -30,7 +30,7 @@
         "marshmallow/feeds-google-shopping": "^1.0",
         "marshmallow/channels-channable": "^1.0",
         "marshmallow/nova-tabs": "^2.0",
-        "laravel/nova": "^4.0"
+        "laravel/nova": "^4.0|^5.0"
     },
     "repositories": [
         {
