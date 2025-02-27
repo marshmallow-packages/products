@@ -22,15 +22,12 @@
     "require": {
         "php": "^8.0|^8.1",
         "marshmallow/commands": "^v1.2.1",
-        "marshmallow/seoable": "^v3.0.0",
-        "marshmallow/sluggable": "^v1.4.0",
-        "marshmallow/helpers": "^v2.12.1",
-        "marshmallow/priceable": "^v3.0.0",
-        "marshmallow/nova-flexible": "^v2.0.0",
-        "marshmallow/feeds-google-shopping": "^1.0",
-        "marshmallow/channels-channable": "^1.0",
-        "marshmallow/nova-tabs": "^2.0",
-        "laravel/nova": "^4.0|^5.0"
+        "marshmallow/seoable": "^v5.0.1",
+        "marshmallow/sluggable": "^v1.9.0",
+        "marshmallow/helpers": "^v2.19.0",
+        "marshmallow/priceable": "^v3.2.0",
+        "marshmallow/nova-flexible": "^v5.1.0",
+        "laravel/nova": "^5.0"
     },
     "repositories": [
         {
