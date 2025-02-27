@@ -18,9 +18,9 @@
     "support": {
         "email": "stef@marshmallow.dev"
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "require": {
-        "php": "^8.0|^8.1",
+        "php": "^8.1",
         "marshmallow/commands": "^v1.2.1",
         "marshmallow/seoable": "^v5.0.1",
         "marshmallow/sluggable": "^v1.9.0",
