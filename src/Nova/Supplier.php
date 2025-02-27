@@ -44,7 +44,7 @@ class Supplier extends Resource
     public function fields(NovaRequest $request)
     {
         return [
-            Text::make(__('Name'), 'name'),
+            Text::make(__('Name'), 'name')->required()->rules(['required']),
             BelongsToMany::make(__('Product'), 'products', config('product.nova.resources.supplier'))->fields(function () {
                 return config('product.nova.relationships.product_supplier')::fields();
             }),

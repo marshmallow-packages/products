@@ -4,13 +4,11 @@ namespace Marshmallow\Product\Nova;
 
 use App\Nova\Resource;
 use Laravel\Nova\Fields\ID;
-use Illuminate\Http\Request;
-use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
-use Marshmallow\Datasets\GoogleProductCategories\Nova\GoogleProductCategory;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 class ProductCategory extends Resource
 {
@@ -52,12 +50,8 @@ class ProductCategory extends Resource
             BelongsTo::make(__('Parent'), 'parent', config('product.nova.resources.product_category'))->exceptOnForms(),
             Text::make(__('Name'), 'name')->sortable()->rules('required'),
             config('product.nova.wysiwyg')::make(__('Description'), 'description')->rules('required'),
-            BelongsTo::make(__('Google Product Category'), 'google', GoogleProductCategory::class)
-                ->searchable()
-                ->nullable(),
-
-            BelongsToMany::make(__('Product'), 'products', config('product.nova.resources.product')),
-            HasMany::make(__('Sub-Categories'), 'children', config('product.nova.resources.product_category')),
+            BelongsToMany::make(__('Product'), 'products', config('product.nova.resources.product'))->collapsedByDefault(),
+            HasMany::make(__('Sub-Categories'), 'children', config('product.nova.resources.product_category'))->collapsedByDefault(),
         ];
     }
 
