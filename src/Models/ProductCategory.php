@@ -5,7 +5,6 @@ namespace Marshmallow\Product\Models;
 use Marshmallow\Sluggable\HasSlug;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Marshmallow\Datasets\GoogleProductCategories\Models\GoogleProductCategory;
 
 /**
  * Is sluggable
@@ -42,10 +41,5 @@ class ProductCategory extends Model
             config('product.models.product_category'),
             'parent_id'
         );
-    }
-
-    public function google()
-    {
-        return $this->belongsTo(GoogleProductCategory::class, 'google_product_category_id');
     }
 }
