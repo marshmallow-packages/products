@@ -48,7 +48,7 @@ class ProductServiceProvider extends ServiceProvider
         /**
          * Routes
          */
-        $this->loadRoutesFrom(__DIR__.'/routes.php');
+        // $this->loadRoutesFrom(__DIR__.'/routes.php'); // Removed - routes file deleted
 
         if ($this->app->runningInConsole()) {
             $this->commands([
