@@ -13,14 +13,14 @@ class ProductObserver
     	 * Handle channels like bol.com etc.
     	 */
         if (class_exists(Channable::class)) {
-            Channable::observe('created', $product);
+            $result = Channable::observe('created', $product);
         }
     }
 
     /**
      * Handle the product "updated" event.
      *
-     * @param  \App\Product  $product
+     * @param  \Marshmallow\Product\Models\Product  $product
      * @return void
      */
     public function updated(Product $product)
@@ -31,14 +31,14 @@ class ProductObserver
     	 * Handle channels like bol.com etc.
     	 */
         if (class_exists(Channable::class)) {
-            Channable::observe('updated', $product);
+            $result = Channable::observe('updated', $product);
         }
     }
 
     /**
      * Handle the product "deleted" event.
      *
-     * @param  \App\Product  $product
+     * @param  \Marshmallow\Product\Models\Product  $product
      * @return void
      */
     public function deleted(Product $product)
@@ -49,14 +49,14 @@ class ProductObserver
     	 * Handle channels like bol.com etc.
     	 */
         if (class_exists(Channable::class)) {
-            Channable::observe('deleted', $product);
+            $result = Channable::observe('deleted', $product);
         }
     }
 
     /**
      * Handle the product "restored" event.
      *
-     * @param  \App\Product  $product
+     * @param  \Marshmallow\Product\Models\Product  $product
      * @return void
      */
     public function restored(Product $product)
@@ -67,14 +67,14 @@ class ProductObserver
     	 * Handle channels like bol.com etc.
     	 */
         if (class_exists(Channable::class)) {
-            Channable::observe('restored', $product);
+            $result = Channable::observe('restored', $product);
         }
     }
 
     /**
      * Handle the product "force deleted" event.
      *
-     * @param  \App\Product  $product
+     * @param  \Marshmallow\Product\Models\Product  $product
      * @return void
      */
     public function forceDeleted(Product $product)
@@ -85,7 +85,7 @@ class ProductObserver
     	 * Handle channels like bol.com etc.
     	 */
         if (class_exists(Channable::class)) {
-            Channable::observe('forceDeleted', $product);
+            $result = Channable::observe('forceDeleted', $product);
         }
     }
 }
