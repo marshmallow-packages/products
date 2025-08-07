@@ -38,7 +38,7 @@ class ProductServiceProvider extends ServiceProvider
          */
         // $this->loadViewsFrom(__DIR__.'/views', 'marshmallow');
 
-        $this->loadFactoriesFrom(__DIR__.'/../database/factories');
+        // $this->loadFactoriesFrom(__DIR__.'/../database/factories'); // Deprecated in Laravel 8+
 
         $this->publishes([
             __DIR__.'/../config/product.php' => config_path('product.php'),
