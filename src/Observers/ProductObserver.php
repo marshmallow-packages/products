@@ -3,18 +3,12 @@
 namespace Marshmallow\Product\Observers;
 
 use Marshmallow\Product\Models\Product;
-use Marshmallow\Channels\Channable\Facades\Channable;
 
 class ProductObserver
 {
     public function created(Product $product)
     {
-        /**
-    	 * Handle channels like bol.com etc.
-    	 */
-        if (class_exists(Channable::class)) {
-            $result = Channable::observe('created', $product);
-        }
+        //
     }
 
     /**
@@ -26,13 +20,6 @@ class ProductObserver
     public function updated(Product $product)
     {
         //
-
-        /**
-    	 * Handle channels like bol.com etc.
-    	 */
-        if (class_exists(Channable::class)) {
-            $result = Channable::observe('updated', $product);
-        }
     }
 
     /**
@@ -44,13 +31,6 @@ class ProductObserver
     public function deleted(Product $product)
     {
         //
-
-        /**
-    	 * Handle channels like bol.com etc.
-    	 */
-        if (class_exists(Channable::class)) {
-            $result = Channable::observe('deleted', $product);
-        }
     }
 
     /**
@@ -62,13 +42,6 @@ class ProductObserver
     public function restored(Product $product)
     {
         //
-
-        /**
-    	 * Handle channels like bol.com etc.
-    	 */
-        if (class_exists(Channable::class)) {
-            $result = Channable::observe('restored', $product);
-        }
     }
 
     /**
@@ -80,12 +53,5 @@ class ProductObserver
     public function forceDeleted(Product $product)
     {
         //
-
-        /**
-    	 * Handle channels like bol.com etc.
-    	 */
-        if (class_exists(Channable::class)) {
-            $result = Channable::observe('forceDeleted', $product);
-        }
     }
 }
