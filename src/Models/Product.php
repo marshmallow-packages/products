@@ -82,9 +82,18 @@ class Product extends Model
         return route('product.detail', $this);
     }
 
-    public function scopeActive(Builder $builder)
+    public function scopeActive(Builder $builder): void
     {
         $builder->where('active', 1);
+    }
+
+    /**
+     * Scope to eager load common relationships and prevent N+1 queries.
+     * Use this when loading collections of products.
+     */
+    public function scopeWithRelationships(Builder $builder): void
+    {
+        $builder->with(['category', 'categories', 'suppliers', 'media']);
     }
 
     public function category(): BelongsTo
